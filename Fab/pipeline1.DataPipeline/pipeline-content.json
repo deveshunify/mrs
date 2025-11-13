@@ -1,0 +1,77 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "Copy data1",
+        "type": "Copy",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "source": {
+            "type": "SqlServerSource",
+            "queryTimeout": "02:00:00",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "annotations": [],
+              "type": "SqlServerTable",
+              "schema": [],
+              "typeProperties": {
+                "schema": "dbo",
+                "table": "EmployeeInfo",
+                "database": "SalesDB"
+              },
+              "externalReferences": {
+                "connection": "4134d308-3ae3-413f-bd71-64852f115850"
+              }
+            }
+          },
+          "sink": {
+            "type": "DataWarehouseSink",
+            "allowCopyCommand": true,
+            "copyCommandSettings": {},
+            "tableOption": "autoCreate",
+            "datasetSettings": {
+              "annotations": [],
+              "connectionSettings": {
+                "name": "ware1",
+                "properties": {
+                  "annotations": [],
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "endpoint": "3o2azv6enfeuvkxt6ht2yj3wqy-actlmalo6cautcjp6tz7extbbu.datawarehouse.fabric.microsoft.com",
+                    "artifactId": "a19d95e7-5d2f-42c2-92fa-40d5382c16a4",
+                    "workspaceId": "01b6a600-f06e-4981-892f-f4f3f25e610d"
+                  },
+                  "externalReferences": {
+                    "connection": "47d2a215-febf-44a4-a17d-caff505326d0"
+                  }
+                }
+              },
+              "type": "DataWarehouseTable",
+              "schema": [],
+              "typeProperties": {
+                "schema": "dbo",
+                "table": "Kun"
+              }
+            }
+          },
+          "enableStaging": true,
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          }
+        }
+      }
+    ]
+  }
+}
