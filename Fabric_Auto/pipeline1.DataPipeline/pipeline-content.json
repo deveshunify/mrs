@@ -1,0 +1,76 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "Copy data1",
+        "type": "Copy",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "source": {
+            "type": "SqlServerSource",
+            "queryTimeout": "02:00:00",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "annotations": [],
+              "type": "SqlServerTable",
+              "schema": [],
+              "typeProperties": {
+                "schema": "dbo",
+                "table": "EmployeeInfo1",
+                "database": "SalesDB"
+              },
+              "externalReferences": {
+                "connection": "4134d308-3ae3-413f-bd71-64852f115850"
+              }
+            }
+          },
+          "sink": {
+            "type": "DataWarehouseSink",
+            "allowCopyCommand": true,
+            "copyCommandSettings": {},
+            "tableOption": "autoCreate",
+            "datasetSettings": {
+              "annotations": [],
+              "connectionSettings": {
+                "name": "ware_git",
+                "properties": {
+                  "annotations": [],
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "endpoint": "3o2azv6enfeuvkxt6ht2yj3wqy-ckw5oo4fx7aezbcomkvotj6dri.datawarehouse.fabric.microsoft.com",
+                    "artifactId": "323698bc-bafd-4d8b-987c-5d07a488e319",
+                    "workspaceId": "3bd7ad12-bf85-4cc0-844e-62aae9a7c38a"
+                  },
+                  "externalReferences": {
+                    "connection": "47d2a215-febf-44a4-a17d-caff505326d0"
+                  }
+                }
+              },
+              "type": "DataWarehouseTable",
+              "schema": [],
+              "typeProperties": {
+                "table": "kun"
+              }
+            }
+          },
+          "enableStaging": true,
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          }
+        }
+      }
+    ]
+  }
+}
