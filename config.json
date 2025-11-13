@@ -1,0 +1,7 @@
+{
+  "sql_server": "LAPTOP-L6EOUU63\SQLEXPRESS",
+  "sql_db": "SalesDB",
+  "warehouse": "323698bc-bafd-4d8b-987c-5d07a488e319",
+  "schema": "dbo",
+  "env": "DEV"
+}
