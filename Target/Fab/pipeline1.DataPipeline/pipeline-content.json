@@ -1,0 +1,131 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "SqlServerSource",
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "type": "SqlServerTable",
+              "typeProperties": {
+                "schema": {
+                  "value": "@json(activity('Notebook1').output.result.exitValue).table_Schema\n",
+                  "type": "Expression"
+                },
+                "table": {
+                  "value": "@json(activity('Notebook1').output.result.exitValue).table_NAME",
+                  "type": "Expression"
+                },
+                "database": {
+                  "value": "@json(activity('Notebook1').output.result.exitValue).sql_database",
+                  "type": "Expression"
+                }
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "@json(activity('Notebook1').output.result.exitValue).sql_server\n"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "DataWarehouseSink",
+            "tableOption": "autoCreate",
+            "allowCopyCommand": true,
+            "copyCommandSettings": {},
+            "datasetSettings": {
+              "type": "DataWarehouseTable",
+              "typeProperties": {
+                "table": "kun"
+              },
+              "schema": [],
+              "connectionSettings": {
+                "name": "7e3b3c88_e796_44a0_9e70_e45b2a4c4e52",
+                "properties": {
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "artifactId": "@json(activity('Notebook1').output.result.exitValue).warehouse_name",
+                    "endpoint": "@json(activity('Notebook1').output.result.exitValue).conn_string",
+                    "workspaceId": "@json(activity('Notebook1').output.result.exitValue).workspace_id"
+                  },
+                  "externalReferences": {
+                    "connection": "47d2a215-febf-44a4-a17d-caff505326d0"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": true
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Copy data1",
+        "dependsOn": [
+          {
+            "activity": "Notebook1",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "2c2c6b5c-9641-9646-42fb-1e2429cec9df",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Notebook1",
+        "dependsOn": []
+      }
+    ],
+    "variables": {
+      "dbname": {
+        "type": "String"
+      },
+      "server": {
+        "type": "String"
+      },
+      "whname": {
+        "type": "String"
+      },
+      "wsid": {
+        "type": "String"
+      },
+      "warestring": {
+        "type": "String"
+      },
+      "table_NAME": {
+        "type": "String"
+      },
+      "table_Schema": {
+        "type": "String"
+      }
+    }
+  }
+}
