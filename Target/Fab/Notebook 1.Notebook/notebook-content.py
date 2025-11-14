@@ -34,13 +34,17 @@ workspace_id = spark.conf.get("trident.workspace.id")
 
 # -------- 3) Build exit JSON --------
 pipeline_parameters = {
-    "sql_server": config["sql_server"],
-    "sql_database": config["sql_database"],
-    "warehouse_name": config["warehouse_name"],
+
+
+    "sql_server": "6d939131-0282-44ff-b191-9e8d5465519b",
+    "sql_database": "AIF",
+    "warehouse_name": "2cf8babd-af80-45ea-af39-18dc1767433a",
     "workspace_id": workspace_id,
-    "conn_string": config["connstring"],
-    "table_NAME" : config["table_NAME"],
-    "table_Schema" : config["table_Schema"]
+    "conn_string": "3o2azv6enfeuvkxt6ht2yj3wqy-qboct6qvhhxu7glkx3iceuuu7m.datawarehouse.fabric.microsoft.com",
+    "table_NAME" : "Fabric",
+    "table_Schema" : "dbo"
+
+
 }
 
 # -------- 4) Return to pipeline --------

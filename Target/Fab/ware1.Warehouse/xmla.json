@@ -79,6 +79,133 @@
             "value": "False"
           }
         ]
+      },
+      {
+        "name": "kun(1)",
+        "sourceLineageTag": "[dbo].[kun]",
+        "columns": [
+          {
+            "name": "Action",
+            "dataType": "string",
+            "sourceColumn": "Action",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Action",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Claim_ID",
+            "dataType": "double",
+            "sourceColumn": "Claim_ID",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "Claim_ID",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "Claim_name",
+            "dataType": "string",
+            "sourceColumn": "Claim_name",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Claim_name",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Engagement",
+            "dataType": "string",
+            "sourceColumn": "Engagement",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Engagement",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Claims_expiry",
+            "dataType": "dateTime",
+            "sourceColumn": "Claims_expiry",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "Claims_expiry",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PM",
+            "dataType": "string",
+            "sourceColumn": "PM",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "PM",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Status",
+            "dataType": "string",
+            "sourceColumn": "Status",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Status",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "kun",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
       }
     ],
     "expressions": [
